@@ -1,0 +1,13 @@
+{
+  "name": "com.ehsaas.health",
+  "version": "1.0.0",
+  "description": "Ehsaas Health Care Application",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Ehsaas Team",
+  "license": "ISC",
+  "dependencies": {}
+}
