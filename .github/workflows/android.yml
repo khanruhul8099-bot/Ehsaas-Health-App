@@ -22,22 +22,27 @@ jobs:
     - name: Install Cordova & Build Android Package
       run: |
         npm install -g cordova
-        cordova create build-android com.ehsaas.health HealthApp
+        
+        # Fresh Cordova Project Creation
+        cordova create build-android com.ehsaas.health EhsaasHealth
         cd build-android
         cordova platform add android
+        
+        # Clear default files and copy your main index.html
         rm -rf www/*
-        cd ..
+        cp ../index.html www/index.html
         
-        # Safe copy for clean layout
-        cp index.html build-android/www/
-        if [ -f icon.png ]; then
-          cp icon.png build-android/www/icon.png
-        fi
-        if [ -f config.xml ]; then
-          cp config.xml build-android/config.xml
+        # Inject custom logo if you uploaded icon.png
+        if [ -f ../icon.png ]; then
+          cp ../icon.png www/icon.png
         fi
         
-        cd build-android
+        # Inject config.xml if exists
+        if [ -f ../config.xml ]; then
+          cp ../config.xml config.xml
+        fi
+        
+        # Final Build
         cordova build android --debug
 
     - name: Upload Finished APK
